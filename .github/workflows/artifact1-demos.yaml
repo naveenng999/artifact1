@@ -1,18 +1,22 @@
 name: Artifact demo
 
-on:push
+on: push
 
 jobs:
- build:
-   runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest
 
-   steps:
-    - name: create file
-      run: |
-        mkdir temp
-        echo "naveen" > temp/naveen.html
-    - name: upload artifact
-      uses: actions/upload-artifact@v4
-      with:
-       name: files
-       path: temp/
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create file
+        run: |
+          mkdir temp
+          echo "naveen" > temp/naveen.html
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: files
+          path: temp/
